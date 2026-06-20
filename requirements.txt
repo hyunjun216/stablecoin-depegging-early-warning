@@ -1,0 +1,17 @@
+pandas
+numpy
+scikit-learn
+imbalanced-learn
+xgboost
+lightgbm
+shap
+matplotlib
+seaborn
+joblib
+requests
+beautifulsoup4
+pytrends
+yfinance
+transformers
+torch
+

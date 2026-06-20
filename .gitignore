@@ -1,0 +1,12 @@
+.env
+**pycache**/
+__pycache__/
+.ipynb_checkpoints/
+*.pkl
+*.joblib
+*.zip
+.DS_Store
+data/raw/
+data/processed/
+data/ml/
+outputs/
