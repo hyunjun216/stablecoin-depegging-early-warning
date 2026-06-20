@@ -1,7 +1,5 @@
 # Project Summary
 
-이 저장소는 BAF 26-1 팀 프로젝트인 USDC·DAI 스테이블코인 디페깅 조기경보 모델을 개인 포트폴리오 제출용으로 정리한 버전입니다.
-
 ## Summary
 
 | 항목 | 내용 |
@@ -15,8 +13,4 @@
 | 최종 모델 | XGBoost |
 | 불균형 처리 | USDC WeightOnly, DAI ADASYN |
 | 주요 지표 | F2-score, Recall |
-
-## Portfolio Scope
-
-원본 팀 프로젝트 전체가 아니라 최종 발표 기준과 직접 연결되는 코드, 문서, figure만 포함했습니다. API key가 포함된 수집 코드, 백업 파일, 중간 산출물, 원자료 전체, pkl 모델 파일은 제외했습니다.
 
