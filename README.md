@@ -1,4 +1,4 @@
-# Stablecoin Depegging Early Warning
+# 스테이블코인 디페깅 조기경보 모델 프로젝트
 
 ## Project Overview
 
