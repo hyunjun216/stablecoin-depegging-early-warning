@@ -1,0 +1,7 @@
+test,AUC_PRC,base,lift,recall@1%,n_pos,mode
+급성군 | SVB_2023/USDC,0.019,0.0122,1.5,0.0,9,acute_pool
+급성군 | UST_2022/UST(미학습),0.724,0.1957,3.7,0.667,18,acute_pool
+급성군 | USDe_2025/USDE(미학습),0.182,0.0251,7.3,0.167,6,acute_pool
+급성군 | FDUSD_2025/FDUSD(미학습),0.179,0.0183,9.8,0.167,6,acute_pool
+급성군 | COVID_2020/USDC,0.058,0.0478,1.2,0.091,22,acute_pool
+USDC단독 | WF_2023(onset),0.357,0.0013,278.0,0.333,9,single_onset

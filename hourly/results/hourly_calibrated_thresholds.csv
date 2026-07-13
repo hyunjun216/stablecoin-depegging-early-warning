@@ -1,0 +1,2 @@
+config,t_caution,t_alert,recall_caution,recall_alert,far_caution,far_alert,brier_raw,brier_cal,aucpr
+A/h6/XGB+sigmoid,0.0002,0.0002,0.976,0.723,0.115,0.018,0.10132,0.10202,0.863

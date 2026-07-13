@@ -1,0 +1,3 @@
+split,AUC_PRC_LSTM,AUC_PRC_XGB,n_test,n_pos
+SVB_cross_event,0.454,0.88,765,59
+WF_2023,0.891,0.881,7028,59
