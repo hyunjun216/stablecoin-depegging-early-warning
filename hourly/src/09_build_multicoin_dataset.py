@@ -1,5 +1,5 @@
 """
-h7_build_multicoin.py — 멀티코인 pooled hourly 데이터셋 빌드
+09_build_multicoin_dataset.py — 멀티코인 pooled hourly 데이터셋 빌드
 
 코인: USDC, UST, BUSD, TUSD, USDP, FDUSD, USDE (Binance) + DAI (Coinbase)
 각 코인에 h1과 동일 파이프라인(wick 정제 → 세그먼트 → 종가기준 타겟 → 코어 피처) 적용 후

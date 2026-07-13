@@ -1,5 +1,5 @@
 """
-h8_pooled_validation.py — 멀티코인 pooled 검증
+10_pooled_validation.py — 멀티코인 pooled 검증
 
 과제 정의 (onset 조건화):
   현재 페그 정상(depeg_t=0)인 시점에서 "6시간 내 디페깅 진입" 예측.

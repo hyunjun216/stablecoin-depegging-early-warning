@@ -1,5 +1,5 @@
 """
-h5_threshold_calibration.py — 경보 임계값 보정 (문헌 표준 방법)
+06_threshold_calibration.py — 경보 임계값 보정 (문헌 표준 방법)
 
 문제: XGB 원확률이 희소사건이라 작고 고정 임계값이 자의적
       (arXiv:2512.00916: 저확률서 F1/AUPRC 최적임계값이 0/1로 퇴화 — 알려진 현상).

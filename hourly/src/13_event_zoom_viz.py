@@ -1,7 +1,7 @@
 """
-h11_event_zoom.py — 디페깅 에피소드 전후(±7일) 확대 비교
+13_event_zoom_viz.py — 디페깅 에피소드 전후(±7일) 확대 비교
 각 패널: 가격 + 실제 디페깅(진빨강) + 경보/주의 배경 + P(onset) 라인 + 진입 시점 수직선
-모델: h10과 동일 (USDC 단독 onset, in-sample 시각화)
+모델: USDC 단독 onset (전체 기간 학습, 시각화용 in-sample)
 """
 
 import pandas as pd

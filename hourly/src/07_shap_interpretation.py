@@ -1,5 +1,5 @@
 """
-h6_shap_hourly.py — hourly 최적모델(A/h6/XGB)의 SHAP 해석
+07_shap_interpretation.py — hourly 최적모델(A/h6/XGB)의 SHAP 해석
 
 무엇이 경보를 울리는가:
   1) 전체 데이터 학습 모델의 SHAP 중요도 (v2 s4와 동일 방식)

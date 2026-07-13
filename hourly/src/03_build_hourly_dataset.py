@@ -1,5 +1,5 @@
 """
-h1_build_hourly.py — 시간단위(1h) USDC 데이터셋 빌드
+03_build_hourly_dataset.py — 시간단위(1h) USDC 데이터셋 빌드
 
 입력: data/collect/raw/binance_hourly_{USDCUSDT,BTCUSDT,ETHUSDT}.csv
 출력: data/processed/df_usdc_hourly.csv

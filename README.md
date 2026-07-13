@@ -21,37 +21,7 @@
 
 ![Early Warning System](figures/velog/07_early_warning_system.png)
 
-> 한계: 디페깅 이벤트가 2020년에 집중되어 일반적인 시계열 검증이 어렵습니다. 자세한 내용은 [Limitations](#limitations) 참고.
-> **→ 이 한계는 이후 개인 후속 연구(아래 Follow-up)에서 시간단위 재구축으로 해소했습니다.**
-
-## Follow-up: Hourly 재구축으로 시계열 검증 달성 (2026-07, 개인 후속 연구)
-
-팀 프로젝트의 최대 한계였던 "시계열 검증 불가"(양성이 2020년 집중 → walk-forward 시 test에 양성 소멸)를 정면으로 해결한 개인 후속 연구입니다. 상세: [`hourly/docs/hourly_development.md`](hourly/docs/hourly_development.md), [`hourly/docs/multicoin_expansion.md`](hourly/docs/multicoin_expansion.md)
-
-**접근**: 문헌 조사(Curve/BOCD 등) 결과 이 도메인의 표준은 "과거 위기로 학습 → 새 위기로 검증 + lead time + 오경보율"의 이벤트 스터디. 이에 따라 ①Binance 시간단위(1h) 데이터로 재구축(양성이 2020 COVID / 2022 UST 전이 / 2023 SVB 3개 시기로 분산 → walk-forward 성립) ②타깃을 onset 조건화("현재 정상 상태에서 6시간 내 디페깅 **진입**" 예측 — 자명한 지속성 예측 제거) ③sigmoid 캘리브레이션 + 경보예산(주의=위험 상위 5%, 경보=상위 1%) 운영점.
-
-**핵심 결과** (전부 out-of-sample):
-
-| 검증 | 결과 |
-|---|---|
-| SVB 2023 위기 홀드아웃 (2023 학습 제외) | AUC-PRC 0.88, 주의 recall 0.976 |
-| Walk-forward onset (2023) | base rate 0.13% 대비 **lift 278배** |
-| 평온 3년(2024~26, 22,084시간) 오경보 | **경보 단 2건** |
-| UST 붕괴 cross-coin (UST 미학습 모델) | AUC-PRC 0.893, recall 0.722 |
-
-![Walk-forward OOS Timeline](figures/hourly/hourly_warning_timeline_oos.png)
-
-연도별 walk-forward out-of-sample 타임라인 — 각 연도를 그 이전 데이터만으로 학습한 모델로 예측. 경보(빨강)가 2022-05 UST 전이·2023-03 SVB에 집중되고, 2024년 이후 평온기에는 켜지지 않습니다.
-
-![Event Zoom](figures/hourly/hourly_event_zoom_pre_post.png)
-
-**검증을 통해 얻은 반직관적 발견 3가지** (성능 수치보다 중요한 결과):
-
-1. **무차별 멀티코인 pooling은 해롭다** — 8개 코인(UST·DAI·USDe 등)으로 확장해 pooled 학습 시 자기 코인 위기 탐지가 급락(AUC-PRC 0.407→0.056). 만성 페그 이탈(DAI 2020, TUSD 2024)과 급성 붕괴는 다른 현상 → 코인별 단독 모델 채택. 단 미학습 신규 코인 탐지에는 급성군 pooled가 유효(UST 0.893)
-2. **LSTM이 XGBoost에 열세** — 순수 walk-forward에선 대등(0.891 vs 0.881)하나 위기 통째 홀드아웃에서 LSTM 붕괴(0.454 vs 0.880). 희소 양성(~90건)에선 단순한 모델이 견고
-3. **일별 거시 변수는 시간단위에서 성능 저하** — 팀 프로젝트의 텍스트 변수와 동일하게 "검증 후 제외" 판단. SHAP 결과 변동성·유동성이 최강 선행신호(일별 분석과 일관)
-
-**정직한 한계**: SVB 사전(pre-onset) lead time은 Binance 결측(2022-09~2023-03 BUSD 전환)이 위기 시작과 겹쳐 측정 불가. 위기 홀드아웃은 실시간 시뮬레이션이 아닌 일반화 시연. 소표본 특성상 AUC는 성능 추정치가 아니라 판별력 시연으로 해석해야 합니다.
+> 한계: 디페깅 이벤트가 2020년에 집중되어 일반적인 시계열 검증이 어렵습니다. 이 한계는 이후 개인 후속 연구에서 시간단위 재구축으로 해소했습니다 → [Follow-up: Hourly Rebuild](#follow-up-hourly-재구축으로-시계열-검증-달성-개인-후속-연구) 참고.
 
 ## Problem Definition
 
@@ -153,6 +123,25 @@ USDC는 7일 거래량(vol_7d)·고가 이탈에 더해 미국 10년물 금리·
 
 Alert 기준은 Recall과 F2-score를 중시해 설정했습니다.
 
+## Follow-up: Hourly 재구축으로 시계열 검증 달성 (개인 후속 연구)
+
+팀 프로젝트 종료 후, 위 Limitations의 핵심이었던 "시계열 검증 불가" 문제를 해결한 개인 후속 연구입니다. 시간단위(1h) 데이터 재구축으로 디페깅 이벤트가 2020 COVID / 2022 UST 전이 / 2023 SVB 세 시기로 분산되어 walk-forward 검증이 성립하게 되었고, 타깃을 onset 예측("현재 정상 상태에서 6시간 내 디페깅 진입")으로 재설계했습니다.
+
+**핵심 결과** (전부 out-of-sample):
+
+| 검증 | 결과 |
+|---|---|
+| SVB 2023 위기 홀드아웃 (2023 학습 제외) | AUC-PRC 0.88, 주의 recall 0.976 |
+| Walk-forward onset (2023) | base rate 대비 lift **278배** |
+| 평온 3년(2024–26, 22,084시간) 오경보 | 경보 **단 2건** |
+| UST 붕괴 cross-coin (UST 미학습 모델) | AUC-PRC 0.893 |
+
+![Walk-forward OOS Timeline](figures/hourly/hourly_warning_timeline_oos.png)
+
+연도별 walk-forward out-of-sample 타임라인 — 각 연도를 그 이전 데이터만으로 학습한 모델로 예측. 경보(빨강)가 2022-05 UST 전이·2023-03 SVB에 집중되고, 2024년 이후 평온기에는 켜지지 않습니다.
+
+검증 과정에서 얻은 발견(멀티코인 pooling의 음의 전이, LSTM vs XGBoost, 거시 변수 제외 판단)과 정직한 한계를 포함한 상세 내용은 **[hourly/README.md](hourly/README.md)** 를 참고하세요.
+
 ## Limitations
 
 - ~~디페깅 이벤트가 2020년에 집중되어 일반적인 시계열 검증이 어렵습니다.~~ → **Follow-up(hourly 재구축)에서 해소**: 시간단위 전환으로 양성이 3개 시기로 분산되어 walk-forward 검증 성립
@@ -193,8 +182,8 @@ stablecoin-depegging-early-warning/
 │   ├── 06_shap_analysis.py
 │   └── 07_early_warning.py
 ├── hourly/                     # Follow-up: hourly 재구축 (개인 후속 연구)
-│   ├── src/                    # 수집(collect_*) + 파이프라인(h1~h15)
-│   ├── docs/                   # 설계·결과·문헌조사 문서
+│   ├── README.md               # 설계·검증·발견·한계 정리
+│   ├── src/                    # 파이프라인 01~14 (수집→빌드→검증→해석→시각화)
 │   └── results/                # 검증 결과 CSV
 ├── figures/
 │   └── hourly/                 # OOS 타임라인, 이벤트 확대, 3단계 경보 등

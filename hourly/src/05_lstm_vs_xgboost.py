@@ -1,5 +1,5 @@
 """
-h3_lstm.py — LSTM 시퀀스 모델 vs XGBoost (A/h6)
+05_lstm_vs_xgboost.py — LSTM 시퀀스 모델 vs XGBoost (A/h6)
 
 직전 k=24시간 피처 시퀀스로 y_tau05_h6 예측.
 동일 split(SVB cross-event, 2023 walk-forward)에서 XGB와 AUC-PRC 비교.

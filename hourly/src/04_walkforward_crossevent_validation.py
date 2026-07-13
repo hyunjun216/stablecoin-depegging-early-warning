@@ -1,5 +1,5 @@
 """
-h2_validation.py — 시계열 검증 프로토콜 (XGBoost)
+04_walkforward_crossevent_validation.py — 시계열 검증 프로토콜 (XGBoost)
 
 두 축:
   1) Walk-forward: 연도별 확장윈도우(expanding), embargo=24h, fold별 AUC-PRC/recall/FAR + pooled
@@ -28,7 +28,7 @@ ML_DIR = os.path.join(PROJECT_DIR, "data", "ml")
 os.makedirs(ML_DIR, exist_ok=True)
 
 RANDOM_STATE = 42
-# 사용법: python h2_validation.py [tau05|tau10]  (기본 tau05)
+# 사용법: python 04_walkforward_crossevent_validation.py [tau05|tau10]  (기본 tau05)
 TAU_NAME = sys.argv[1] if len(sys.argv) > 1 else "tau05"
 TAU = {"tau05": 0.005, "tau10": 0.01}[TAU_NAME]
 HORIZONS = [1, 6, 24]

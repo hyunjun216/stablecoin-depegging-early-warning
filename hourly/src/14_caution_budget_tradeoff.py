@@ -1,6 +1,6 @@
 """
-h15_caution_budget.py — 주의(Caution) 예산 축소의 트레이드오프 실측
-walk-forward OOS(h12와 동일)에서 예산 5%/3%/2%별:
+14_caution_budget_tradeoff.py — 주의(Caution) 예산 축소의 트레이드오프 실측
+walk-forward OOS에서 예산 5%/3%/2%별:
   - 위기 연도(2022, 2023) onset 양성 recall (미탐 증가 여부)
   - 평온 연도 주의 점등 시간 (오탐 감소 폭)
   - UST 2022 사전(pre-onset) 주의 유지 여부

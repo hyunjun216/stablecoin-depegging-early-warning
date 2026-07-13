@@ -1,5 +1,5 @@
 """
-h9_regime_pooling.py — 레짐별 그룹 pooling + onset 소급 + 평온연도 오경보
+11_regime_pooling_onset.py — 레짐별 그룹 pooling + onset 소급 + 평온연도 오경보
 
 A) 레짐 그룹: 급성군(USDC/UST/BUSD/USDP/FDUSD/USDE)만 pooling — 만성군(DAI/TUSD) 제외
    → 음의 전이 해소 여부. 비교: 단독 vs 급성군 vs 전체 pooled
