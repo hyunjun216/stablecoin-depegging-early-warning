@@ -136,9 +136,9 @@ Alert 기준은 Recall과 F2-score를 중시해 설정했습니다.
 | 평온 3년(2024–26, 22,084시간) 오경보 | 경보 **단 2건** |
 | UST 붕괴 cross-coin (UST 미학습 모델) | AUC-PRC 0.893 |
 
-![Walk-forward OOS Timeline](figures/hourly/hourly_warning_timeline_oos.png)
+![SVB Out-of-sample Detection](figures/hourly/hourly_calibrated_3level_SVB.png)
 
-연도별 walk-forward out-of-sample 타임라인 — 각 연도를 그 이전 데이터만으로 학습한 모델로 예측. 경보(빨강)가 2022-05 UST 전이·2023-03 SVB에 집중되고, 2024년 이후 평온기에는 켜지지 않습니다.
+2023-03 SVB 위기를 **학습에서 제외한 모델**의 out-of-sample 탐지 — USDC가 0.94까지 급락하는 구간에 경보(빨강)·주의(주황)가 점등되고, 페그 회복 후 꺼집니다.
 
 검증 과정에서 얻은 발견(멀티코인 pooling의 음의 전이, LSTM vs XGBoost, 거시 변수 제외 판단)과 정직한 한계를 포함한 상세 내용은 **[hourly/README.md](hourly/README.md)** 를 참고하세요.
 

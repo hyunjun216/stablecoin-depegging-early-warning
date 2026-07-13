@@ -24,7 +24,13 @@
 | 평온 3년(2024–26, 22,084시간) 오경보 | 경보 **단 2건** |
 | UST 붕괴 cross-coin (UST 미학습 모델) | AUC-PRC 0.893, recall 0.722 |
 
-![Walk-forward OOS Timeline](../figures/hourly/hourly_warning_timeline_oos.png)
+![SVB Out-of-sample Detection](../figures/hourly/hourly_calibrated_3level_SVB.png)
+
+SVB 위기를 학습에서 제외한 모델의 out-of-sample 탐지. 급락 구간에 경보·주의가 점등되고 페그 회복 후 꺼진다.
+
+![SHAP (SVB holdout view)](../figures/hourly/hourly_shap_svb.png)
+
+SHAP 해석(위기 홀드아웃 모델): USDC 자체 변동성(vol_24h)과 BTC/ETH 변동성이 최상위 — 일별 분석과 해상도 불문 일관되게 "변동성·유동성이 최강 선행신호".
 
 ## 검증에서 얻은 발견
 
