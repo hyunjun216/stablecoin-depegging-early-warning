@@ -6,6 +6,8 @@
 **핵심 결과 (팀)**: XGBoost F2 USDC 0.906 / DAI 0.878
 **개인 후속**: 시간 단위 재구축으로 walk-forward 검증, SVB 위기 홀드아웃 AUC-PRC 0.88, 평온한 3년 동안 오경보 2건
 
+![표지](images/01_cover.png)
+
 ---
 
 ## Project Overview
