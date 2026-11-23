@@ -1,4 +1,12 @@
-# 스테이블코인 디페깅 조기경보 모델 프로젝트
+# 스테이블코인 디페깅 조기경보 · BAF 학회 프로젝트
+
+> USDC·DAI의 다음 날 디페깅을 예측하고, 예측 확률을 3단계 조기경보로 바꾸는 불균형 분류 모델
+> 3인 팀 (**본인: 뉴스 텍스트 변수 담당**) + 팀 종료 후 개인 후속 연구 · 2026 상반기
+
+**핵심 결과 (팀)**: XGBoost F2 USDC 0.906 / DAI 0.878
+**개인 후속**: 시간 단위 재구축으로 walk-forward 검증, SVB 위기 홀드아웃 AUC-PRC 0.88, 평온한 3년 동안 오경보 2건
+
+---
 
 ## Project Overview
 
@@ -138,7 +146,7 @@ Alert 기준은 Recall과 F2-score를 중시해 설정했습니다.
 
 ![SVB Out-of-sample Detection](figures/hourly/hourly_calibrated_3level_SVB.png)
 
-2023-03 SVB 위기를 **학습에서 제외한 모델**의 out-of-sample 탐지 — USDC가 0.94까지 급락하는 구간에 경보(빨강)·주의(주황)가 점등되고, 페그 회복 후 꺼집니다.
+2023-03 SVB 위기를 **학습에서 제외한 모델**의 out-of-sample 탐지: USDC가 0.94까지 급락하는 구간에 경보(빨강)·주의(주황)가 점등되고, 페그 회복 후 꺼집니다.
 
 검증 과정에서 얻은 발견(멀티코인 pooling의 음의 전이, LSTM vs XGBoost, 거시 변수 제외 판단)과 정직한 한계를 포함한 상세 내용은 **[hourly/README.md](hourly/README.md)** 를 참고하세요.
 
